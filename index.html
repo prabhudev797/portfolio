@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Prabhudev A. Desai — Software Engineer</title>
+        <meta
+            name="description"
+            content="Portfolio of Prabhudev A. Desai — Software Engineer specializing in Java, Spring Boot, Node.js, React, Frappe, and scalable systems."
+        />
+        <meta
+            property="og:title"
+            content="Prabhudev A. Desai — Software Engineer"
+        />
+        <meta
+            property="og:description"
+            content="Java, Spring Boot, Node.js, React, Frappe, MySQL, MongoDB, Nginx, System Design."
+        />
+        <meta property="og:type" content="website" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --bg: #0b0c10;
+                --panel: #111318;
+                --text: #e8eaf0;
+                --muted: #9aa1ad;
+                --brand: #6cf;
+                --brand-2: #8af5b6;
+                --card: #141721;
+                --chip: #1b2130;
+                --border: #222836;
+                --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            }
+            :root.light {
+                --bg: #f7f8fb;
+                --panel: #ffffff;
+                --text: #12151c;
+                --muted: #5c6574;
+                --brand: #0b74ff;
+                --brand-2: #13b980;
+                --card: #ffffff;
+                --chip: #eef2f7;
+                --border: #e8edf4;
+                --shadow: 0 8px 24px rgba(2, 8, 20, 0.08);
+            }
+            * {
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                margin: 0;
+                font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+                    Ubuntu, "Helvetica Neue", Arial;
+                background: var(--bg);
+                color: var(--text);
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+            }
+            a {
+                color: var(--brand);
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            .container {
+                width: min(1200px, 95vw);
+                margin: 0 auto;
+            }
+            header {
+                position: sticky;
+                top: 0;
+                z-index: 40;
+                backdrop-filter: saturate(1.2) blur(8px);
+                border-bottom: 1px solid var(--border);
+                background: color-mix(in oklab, var(--bg) 85%, transparent);
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 0;
+            }
+            .nav a.brand {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                font-weight: 700;
+                letter-spacing: 0.2px;
+                color: var(--text);
+                text-decoration: none;
+            }
+            .logo {
+                width: 34px;
+                height: 34px;
+                border-radius: 12px;
+                display: grid;
+                place-items: center;
+                font-weight: 800;
+                background: linear-gradient(
+                    135deg,
+                    var(--brand),
+                    var(--brand-2)
+                );
+                color: #000;
+            }
+            .nav .links {
+                display: flex;
+                gap: 18px;
+                align-items: center;
+            }
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 6px 14px;
+                border-radius: 12px;
+                border: 1px solid var(--border);
+                background: var(--panel);
+                color: var(--text);
+                text-decoration: none;
+                box-shadow: var(--shadow);
+                transition: transform 0.08s ease;
+            }
+            .btn:hover {
+                transform: translateY(-1px);
+            }
+            .ghost {
+                background: transparent;
+                box-shadow: none;
+            }
+            .brand-btn {
+                background: linear-gradient(
+                    135deg,
+                    var(--brand),
+                    var(--brand-2)
+                );
+                color: #051018;
+                border: none;
+            }
+
+            /* Hero */
+            .hero {
+                display: grid;
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 34px;
+                padding: 70px 0 26px;
+            }
+            .avatar {
+                width: 88px;
+                height: 88px;
+                border-radius: 28px;
+                background: linear-gradient(
+                    135deg,
+                    var(--brand),
+                    var(--brand-2)
+                );
+                display: grid;
+                place-items: center;
+                font-weight: 900;
+                font-size: 30px;
+                color: #061018;
+                margin-bottom: 18px;
+                box-shadow: var(--shadow);
+            }
+            .title {
+                font-size: 40px;
+                line-height: 1.15;
+                margin: 0 0 10px;
+                letter-spacing: -0.5px;
+            }
+            .subtitle {
+                margin-top: 0;
+                color: var(--muted);
+                font-size: 18px;
+            }
+            .quick {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin: 18px 0 24px;
+            }
+            .chip {
+                padding: 8px 12px;
+                border-radius: 999px;
+                background: var(--chip);
+                border: 1px solid var(--border);
+                font-size: 13px;
+            }
+            .hero aside {
+                background: var(--card);
+                border: 1px solid var(--border);
+                padding: 16px;
+                border-radius: 18px;
+            }
+            .stats {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+                margin-top: 12px;
+            }
+            .stat {
+                background: var(--panel);
+                border: 1px solid var(--border);
+                padding: 14px;
+                border-radius: 16px;
+                text-align: center;
+            }
+            .stat .n {
+                font-size: 22px;
+                font-weight: 800;
+            }
+            .tools {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            /* Section */
+            section {
+                padding: 40px 0;
+            }
+            .section-title {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin: 0 0 16px;
+            }
+            .section-title h2 {
+                margin: 0;
+                font-size: 24px;
+                letter-spacing: -0.2px;
+            }
+            .section-title .bar {
+                height: 2px;
+                width: 24px;
+                background: linear-gradient(
+                    135deg,
+                    var(--brand),
+                    var(--brand-2)
+                );
+                border-radius: 999px;
+            }
+
+            /* Cards, timeline */
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 16px;
+            }
+            .card {
+                grid-column: span 12;
+                background: var(--card);
+                border: 1px solid var(--border);
+                border-radius: 18px;
+                padding: 16px;
+                box-shadow: var(--shadow);
+            }
+            .card h3 {
+                margin: 0 0 6px;
+            }
+            .muted {
+                color: var(--muted);
+            }
+            .tag {
+                display: inline-block;
+                font-size: 12px;
+                padding: 6px 10px;
+                border: 1px solid var(--border);
+                border-radius: 999px;
+                background: var(--chip);
+                margin: 6px 6px 0 0;
+            }
+
+            .timeline {
+                position: relative;
+            }
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 10px;
+                top: 8px;
+                bottom: 8px;
+                width: 2px;
+                background: linear-gradient(
+                    to bottom,
+                    var(--brand),
+                    transparent
+                );
+            }
+            .t-item {
+                position: relative;
+                padding-left: 32px;
+                margin: 18px 0;
+            }
+            .t-item::marker {
+                content: "";
+            }
+            .t-item .dot {
+                position: absolute;
+                left: 3px;
+                top: 4px;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: var(--brand);
+            }
+
+            /* Projects */
+            .projects {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 16px;
+            }
+            .project {
+                grid-column: span 6;
+                background: var(--card);
+                border: 1px solid var(--border);
+                border-radius: 18px;
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .project a.inline {
+                font-weight: 600;
+            }
+            .p-actions {
+                display: flex;
+                gap: 10px;
+                margin-top: auto;
+            }
+
+            /* Footer */
+            footer {
+                border-top: 1px solid var(--border);
+                padding: 26px 0 60px;
+                color: var(--muted);
+            }
+
+            /* Responsive */
+            @media (max-width: 920px) {
+                .hero {
+                    grid-template-columns: 1fr;
+                }
+                .project {
+                    grid-column: span 12;
+                }
+            }
+        </style>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Prabhudev Desai",
+                "jobTitle": "Senior Software Engineer",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Bengaluru",
+                    "addressRegion": "Karnataka",
+                    "addressCountry": "IN"
+                },
+                "email": "mailto:prabhudesai007@gmail.com",
+                "telephone": "+918861100304",
+                "sameAs": [
+                    "https://www.linkedin.com/in/prabhudev797",
+                    "https://github.com/prabhu797",
+                    "https://latestnews7.netlify.app/"
+                ]
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="container nav">
+                <a class="brand" href="#top" aria-label="Home">
+                    <div class="logo" aria-hidden="true">PD</div>
+                    <span>Portfolio</span>
+                </a>
+                <nav class="links" aria-label="Primary">
+                    <a class="ghost" href="#experience">Experience</a>
+                    <a class="ghost" href="#projects">Projects</a>
+                    <a class="ghost" href="#skills">Skills</a>
+                    <a class="ghost" href="#education">Education</a>
+                    <a class="ghost" href="#contact">Contact</a>
+                    <button
+                        class="btn"
+                        id="themeBtn"
+                        type="button"
+                        aria-label="Toggle theme"
+                    >
+                        🌙
+                    </button>
+                    <a
+                        class="btn brand-btn"
+                        href="prabhudev_desai_resume_25.pdf"
+                        download
+                    >
+                        Download Résumé
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <main id="top" class="container">
+            <!-- Hero -->
+            <section class="hero" aria-labelledby="intro">
+                <div>
+                    <div class="avatar" aria-hidden="true">PD</div>
+                    <h1 id="intro" class="title">Prabhudev Desai</h1>
+                    <p class="subtitle">
+                        Senior Software Engineer · Bengaluru, Karnataka · 2
+                        years experience · Java, Spring Boot, Node.js, React,
+                        Frappe · Building reliable, scalable products
+                        end‑to‑end.
+                    </p>
+                    <div class="quick">
+                        <a class="btn" href="mailto:prabhudesai007@gmail.com">
+                            <svg
+                                height="20"
+                                width="20"
+                                version="1.1"
+                                id="_x32_"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 512 512"
+                                xml:space="preserve"
+                                fill="currentColor"
+                            >
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g
+                                    id="SVGRepo_tracerCarrier"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <style type="text/css"></style>
+                                    <g>
+                                        <path
+                                            class="st0"
+                                            d="M440.917,67.925H71.083C31.827,67.925,0,99.752,0,139.008v233.984c0,39.256,31.827,71.083,71.083,71.083 h369.834c39.255,0,71.083-31.827,71.083-71.083V139.008C512,99.752,480.172,67.925,440.917,67.925z M178.166,321.72l-99.54,84.92 c-7.021,5.992-17.576,5.159-23.567-1.869c-5.992-7.021-5.159-17.576,1.87-23.567l99.54-84.92c7.02-5.992,17.574-5.159,23.566,1.87 C186.027,305.174,185.194,315.729,178.166,321.72z M256,289.436c-13.314-0.033-26.22-4.457-36.31-13.183l0.008,0.008l-0.032-0.024 c0.008,0.008,0.017,0.008,0.024,0.016L66.962,143.694c-6.98-6.058-7.723-16.612-1.674-23.583c6.057-6.98,16.612-7.723,23.582-1.674 l152.771,132.592c3.265,2.906,8.645,5.004,14.359,4.971c5.706,0.017,10.995-2.024,14.44-5.028l0.074-0.065l152.615-132.469 c6.971-6.049,17.526-5.306,23.583,1.674c6.048,6.97,5.306,17.525-1.674,23.583l-152.77,132.599 C282.211,284.929,269.322,289.419,256,289.436z M456.948,404.771c-5.992,7.028-16.547,7.861-23.566,1.869l-99.54-84.92 c-7.028-5.992-7.861-16.546-1.869-23.566c5.991-7.029,16.546-7.861,23.566-1.87l99.54,84.92 C462.107,387.195,462.94,397.75,456.948,404.771z"
+                                        ></path>
+                                    </g>
+                                </g>
+                            </svg>
+                            Email</a
+                        >
+                        <a class="btn" href="tel:+918861100304">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                height="20"
+                                width="20"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g
+                                    id="SVGRepo_tracerCarrier"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M9 16C2.814 9.813 3.11 5.134 5.94 3.012l.627-.467a1.483 1.483 0 0 1 2.1.353l1.579 2.272a1.5 1.5 0 0 1-.25 1.99L8.476 8.474c-.38.329-.566.828-.395 1.301.316.88 1.083 2.433 2.897 4.246 1.814 1.814 3.366 2.581 4.246 2.898.474.17.973-.015 1.302-.396l1.314-1.518a1.5 1.5 0 0 1 1.99-.25l2.276 1.58a1.48 1.48 0 0 1 .354 2.096l-.47.633C19.869 21.892 15.188 22.187 9 16z"
+                                    ></path>
+                                </g>
+                            </svg>
+                            Call</a
+                        >
+                        <a
+                            class="btn"
+                            href="https://www.linkedin.com/in/prabhudev797"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                data-supported-dps="24x24"
+                                fill="currentColor"
+                                class="mercado-match"
+                                width="22"
+                                height="22"
+                                focusable="false"
+                            >
+                                <path
+                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+                                ></path>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a
+                            class="btn"
+                            href="https://github.com/prabhu797"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <svg
+                                height="24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                viewBox="0 0 24 24"
+                                version="1.1"
+                                width="24"
+                                data-view-component="true"
+                                class="octicon octicon-mark-github v-align-middle"
+                            >
+                                <path
+                                    d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"
+                                ></path>
+                            </svg>
+                            GitHub</a
+                        >
+                        <!-- <a class="btn" href="#projects">See Projects ↓</a> -->
+                    </div>
+                    <div class="tools" aria-label="Highlights">
+                        <span class="chip">Real‑time systems</span>
+                        <span class="chip">Prometheus & Grafana</span>
+                        <span class="chip">Nginx & Load Balancing</span>
+                        <span class="chip">ERPNext</span>
+                    </div>
+                </div>
+                <aside aria-label="At a glance">
+                    <div class="section-title">
+                        <div class="bar"></div>
+                        <h2>At a glance</h2>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="n" aria-label="Years of experience">
+                                2+
+                            </div>
+                            <div class="muted">Years</div>
+                        </div>
+                        <div class="stat">
+                            <div class="n">8+</div>
+                            <div class="muted">Core Skills</div>
+                        </div>
+                        <div class="stat">
+                            <div class="n">13+</div>
+                            <div class="muted">Projects</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 16px">
+                        <div class="muted" style="margin-bottom: 8px">
+                            I focus on performance, reliability, and clean code.
+                        </div>
+                        <div class="tools">
+                            <span class="tag">Java</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Frappe</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Linux</span>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience" aria-labelledby="exp-title">
+                <div class="section-title">
+                    <div class="bar"></div>
+                    <h2 id="exp-title">Professional Experience</h2>
+                </div>
+                <div class="card timeline">
+                    <div class="t-item">
+                        <div class="dot" aria-hidden="true"></div>
+                        <h3>
+                            Senior Software Engineer · Novel Office
+                            <span class="muted"
+                                >(Dec 2023 – Sep 2025 · Bengaluru, India)</span
+                            >
+                        </h3>
+                        <ul>
+                            <li>
+                                Built an AI Chat Assist platform with a
+                                React-based agent interface and a
+                                customer-facing UI enabling seamless real-time
+                                communication across users, agents, and AI.
+                            </li>
+                            <li>
+                                Resolved concurrent messaging issues and
+                                optimized data storage/retrieval, improving
+                                reliability, scalability, and performance.
+                            </li>
+                            <li>
+                                Configured multi-domain support with Nginx and
+                                isolated socket connections on a single server
+                                for efficient traffic handling.
+                            </li>
+                            <li>
+                                Developed an issue management system using
+                                Frappe, React, Redux, and MUI, cutting
+                                resolution time by ~50% and boosting team
+                                productivity.
+                            </li>
+                            <li>
+                                Integrated real-time chat and reporting to
+                                uncover recurring issues and improve client
+                                satisfaction.
+                            </li>
+                            <li>
+                                Automated payroll and tax workflows, reducing
+                                processing time from 8 to 3 days and
+                                strengthening compliance.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="t-item">
+                        <div class="dot" aria-hidden="true"></div>
+                        <h3>
+                            Technical Support Associate · Concentrix
+                            <span class="muted"
+                                >(May 2023 – Jul 2023 · Bengaluru, India)</span
+                            >
+                        </h3>
+                        <ul>
+                            <li>
+                                Delivered prompt technical support and clear
+                                communication to minimize downtime and enhance
+                                user experience.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section id="projects" aria-labelledby="proj-title">
+                <div class="section-title">
+                    <div class="bar"></div>
+                    <h2 id="proj-title">Projects</h2>
+                </div>
+                <div class="projects">
+                    <article class="project">
+                        <h3>News 24×7</h3>
+                        <p class="muted">A React.js news app with category filtering, dark mode, and functional components, sourcing reliable updates from thenewsapi.com.</p>
+                        <div>
+                            <span class="tag">React</span>
+                            <span class="tag">API Integration</span>
+                            <span class="tag">WebApp</span>
+                        </div>
+                        <div class="p-actions">
+                            <a
+                                class="btn"
+                                href="https://latestnews7.netlify.app/"
+                                target="_blank"
+                                rel="noopener"
+                                >Live</a
+                            >
+                            <a
+                                class="btn"
+                                href="https://github.com/prabhudev797/NewsApp"
+                                target="_blank"
+                                rel="noopener"
+                                >Code</a
+                            >
+                        </div>
+                    </article>
+                    <article class="project">
+                        <h3>AI Chat Assist</h3>
+                        <p class="muted">
+                            Real‑time chat platform connecting users, agents,
+                            and AI with concurrency fixes and storage
+                            optimizations.
+                        </p>
+                        <div>
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Frappe</span>
+                            <span class="tag">Nginx</span>
+                            <span class="tag">WebSockets</span>
+                        </div>
+                        <div class="p-actions">
+                            <a
+                                class="btn"
+                                href="https://github.com/prabhu797/ai_chat_assist.git"
+                                target="_blank"
+                                rel="noopener"
+                                >Code</a
+                            >
+                        </div>
+                    </article>
+                    <article class="project">
+                        <h3>Restaurant Management System</h3>
+                        <p class="muted">
+                            Backend services for restaurant operations.
+                        </p>
+                        <div>
+                            <span class="tag">Java</span>
+                            <span class="tag">SpringBoot</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">JWT</span>
+                        </div>
+                        <div class="p-actions">
+                            <a
+                                class="btn"
+                                href="https://github.com/prabhu797/restaurant_backend.git"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Code
+                            </a>
+                        </div>
+                    </article>
+                    <article class="project">
+                        <h3>Hit-The-Mole</h3>
+                        <p class="muted">
+                            "Hit The Mole" is built with HTML, CSS, and
+                            JavaScript, featuring a timer for urgency and a
+                            scoreboard to track scores, encouraging
+                            replayability.
+                        </p>
+                        <div>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                        <div>
+                            <a
+                                class="btn"
+                                href="https://github.com/prabhudev797/Hit-The-Mole"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Code
+                            </a>
+                            <a
+                                class="btn"
+                                href="https://prabhudev797.github.io/Hit-The-Mole/"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Live
+                            </a>
+                        </div>
+                    </article>
+                    <article class="project">
+                        <h3>Issue Management System</h3>
+                        <p class="muted">
+                            Internal tool with real‑time chat and analytics that
+                            reduced turnaround time.
+                        </p>
+                        <div>
+                            <span class="tag">Frappe</span>
+                            <span class="tag">React</span>
+                            <span class="tag">MUI</span>
+                            <span class="tag">Web Pages</span>
+                        </div>
+                    </article>
+                    <article class="project">
+                        <h3>Streamlined Payroll & Tax Management</h3>
+                        <p class="muted">
+                            Automations that reduced processing from 8 days to 3
+                            days with accurate tax handling and reporting.
+                        </p>
+                        <div>
+                            <span class="tag">Automation</span
+                            ><span class="tag">Frappe</span
+                            ><span class="tag">HRMS</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills" aria-labelledby="skills-title">
+                <div class="section-title">
+                    <div class="bar"></div>
+                    <h2 id="skills-title">Skills</h2>
+                </div>
+                <div class="grid">
+                    <div class="card" style="grid-column: span 7">
+                        <h3>Technical</h3>
+                        <div>
+                            <span class="tag">Java</span
+                            ><span class="tag">Spring Boot</span
+                            ><span class="tag">Node.js</span
+                            ><span class="tag">JavaScript</span>
+                            <span class="tag">React.js</span
+                            ><span class="tag">Redux</span
+                            ><span class="tag">HTML</span
+                            ><span class="tag">CSS</span>
+                            <span class="tag">Frappe</span
+                            ><span class="tag">Python</span
+                            ><span class="tag">C</span
+                            ><span class="tag">Bootstrap</span>
+                            <span class="tag">Material UI</span
+                            ><span class="tag">MySQL</span
+                            ><span class="tag">MongoDB</span>
+                            <span class="tag">Linux</span
+                            ><span class="tag">Nginx</span
+                            ><span class="tag">Load Balancer</span>
+                            <span class="tag">Basic System Design</span>
+                        </div>
+                    </div>
+                    <div class="card" style="grid-column: span 5">
+                        <h3>Soft Skills</h3>
+                        <ul>
+                            <li>
+                                Time management & customer-focused task adaptation.
+                            </li>
+                            <li>
+                                Managed & collaborated with a 5‑member
+                                cross‑functional team.
+                            </li>
+                            <li>
+                                Strong communication, creativity, flexibility,
+                                and adaptability.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education & Certifications -->
+            <section id="education" aria-labelledby="edu-title">
+                <div class="section-title">
+                    <div class="bar"></div>
+                    <h2 id="edu-title">Education & Certifications</h2>
+                </div>
+                <div class="grid">
+                    <div class="card" style="grid-column: span 7">
+                        <h3>B.E. Mechanical Engineering</h3>
+                        <p class="muted">
+                            KLE’s Dr. M.S Sheshgiri College of Engineering &
+                            Technology, Belagavi <br />2019 – 2022
+                        </p>
+                    </div>
+                    <div class="card" style="grid-column: span 5">
+                        <h3>Certifications</h3>
+                        <ul>
+                            <li>
+                                Java Full Stack Developer — JSpiders, Bengaluru
+                            </li>
+                            <li>Stock Trading and Investments</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact" aria-labelledby="contact-title">
+                <div class="section-title">
+                    <div class="bar"></div>
+                    <h2 id="contact-title">Contact</h2>
+                </div>
+                <div class="grid">
+                    <div class="card" style="grid-column: span 7">
+                        <p><strong>Location:</strong> Bengaluru, Karnataka</p>
+                        <p>
+                            <strong>Phone:</strong>
+                            <a href="tel:+918861100304">+91 88611 00304</a>
+                        </p>
+                        <p>
+                            <strong>Email:</strong>
+                            <a
+                                id="emailLink"
+                                href="mailto:prabhudesai007@gmail.com"
+                                >prabhudesai007@gmail.com</a
+                            >
+                            <button class="btn" id="copyEmail" type="button">
+                                Copy
+                            </button>
+                        </p>
+                        <p>
+                            <strong>LinkedIn:</strong>
+                            <a
+                                href="https://www.linkedin.com/in/prabhudev797"
+                                target="_blank"
+                                rel="noopener"
+                                >linkedin.com/in/prabhudev797
+                            </a>
+                        </p>
+                        <p>
+                            <strong>GitHub:</strong>
+                            <a
+                                href="https://github.com/prabhu797"
+                                target="_blank"
+                                rel="noopener"
+                                >github.com/prabhu797
+                            </a>
+                        </p>
+                        <p>
+                            <strong>Leetcode:</strong>
+                            <a
+                                href="https://leetcode.com/u/prabhudev797/"
+                                target="_blank"
+                                rel="noopener"
+                                >leetcode.com/u/prabhudev797
+                            </a>
+                        </p>
+                    </div>
+                    <div class="card" style="grid-column: span 5">
+                        <h3>Quick Message</h3>
+                        <form
+                            id="contactForm"
+                            onsubmit="return false"
+                            aria-label="Contact form"
+                        >
+                            <label
+                                >Name<br /><input
+                                    required
+                                    name="name"
+                                    placeholder="Your name"
+                                    style="
+                                        width: 100%;
+                                        padding: 10px;
+                                        border-radius: 10px;
+                                        border: 1px solid var(--border);
+                                        background: var(--panel);
+                                        color: var(--text);
+                                    "
+                            /></label>
+                            <br /><br />
+                            <label
+                                >Email<br /><input
+                                    required
+                                    type="email"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    style="
+                                        width: 100%;
+                                        padding: 10px;
+                                        border-radius: 10px;
+                                        border: 1px solid var(--border);
+                                        background: var(--panel);
+                                        color: var(--text);
+                                    "
+                            /></label>
+                            <br /><br />
+                            <label
+                                >Message<br /><textarea
+                                    required
+                                    name="message"
+                                    rows="4"
+                                    placeholder="Hello…"
+                                    style="
+                                        width: 100%;
+                                        padding: 10px;
+                                        border-radius: 10px;
+                                        border: 1px solid var(--border);
+                                        background: var(--panel);
+                                        color: var(--text);
+                                    "
+                                ></textarea>
+                            </label>
+                            <br /><br />
+                            <button class="btn brand-btn" type="submit">
+                                Send (demo)
+                            </button>
+                            <div
+                                class="muted"
+                                id="formNote"
+                                aria-live="polite"
+                                style="margin-top: 8px"
+                            >
+                                This demo form only shows a toast.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div
+                    style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 10px;
+                        flex-wrap: wrap;
+                    "
+                >
+                    <div>© <span id="yr"></span> Prabhudev A. Desai</div>
+                    <div class="muted">
+                        Built with semantic HTML, handcrafted CSS, and a
+                        sprinkle of JS.
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Theme toggle with localStorage
+            const themeBtn = document.getElementById("themeBtn");
+            const root = document.documentElement;
+            const applyTheme = (mode) => {
+                if (mode === "light") {
+                    root.classList.add("light");
+                    themeBtn.textContent = "🌞";
+                } else {
+                    root.classList.remove("light");
+                    themeBtn.textContent = "🌙";
+                }
+                localStorage.setItem("theme", mode);
+            };
+            const saved = localStorage.getItem("theme");
+            applyTheme(
+                saved ||
+                    (window.matchMedia("(prefers-color-scheme: light)").matches
+                        ? "light"
+                        : "dark")
+            );
+            themeBtn.addEventListener("click", () => {
+                const now = root.classList.contains("light") ? "dark" : "light";
+                applyTheme(now);
+            });
+
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach((a) => {
+                a.addEventListener("click", (e) => {
+                    const id = a.getAttribute("href");
+                    if (id.length > 1) {
+                        e.preventDefault();
+                        document
+                            .querySelector(id)
+                            .scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            });
+
+            // Copy email
+            document
+                .getElementById("copyEmail")
+                .addEventListener("click", async () => {
+                    try {
+                        await navigator.clipboard.writeText(
+                            "prabhudesai007@gmail.com"
+                        );
+                        toast("Email copied to clipboard");
+                    } catch {
+                        toast("Copy failed — you can copy manually.");
+                    }
+                });
+
+            // Demo form
+            document
+                .getElementById("contactForm")
+                .addEventListener("submit", () => {
+                    toast("Thanks! Your (demo) message has been noted.");
+                });
+
+            // Tiny toast
+            function toast(msg) {
+                const t = document.createElement("div");
+                t.textContent = msg;
+                t.style.position = "fixed";
+                t.style.bottom = "18px";
+                t.style.right = "18px";
+                t.style.padding = "12px 14px";
+                t.style.background = "var(--panel)";
+                t.style.border = "1px solid var(--border)";
+                t.style.borderRadius = "12px";
+                t.style.boxShadow = "var(--shadow)";
+                document.body.appendChild(t);
+                setTimeout(() => {
+                    t.style.opacity = ".0";
+                    t.style.transition = "opacity .4s";
+                }, 1300);
+                setTimeout(() => t.remove(), 1800);
+            }
+
+            // Year
+            document.getElementById("yr").textContent =
+                new Date().getFullYear();
+        </script>
+    </body>
+</html>
