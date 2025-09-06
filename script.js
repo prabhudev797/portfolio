@@ -1,0 +1,105 @@
+// Theme toggle with localStorage
+const themeBtn = document.getElementById("themeBtn");
+const root = document.documentElement;
+const applyTheme = (mode) => {
+  if (mode === "light") {
+    root.classList.add("light");
+    themeBtn.textContent = "🌞";
+  } else {
+    root.classList.remove("light");
+    themeBtn.textContent = "🌙";
+  }
+  localStorage.setItem("theme", mode);
+};
+const saved = localStorage.getItem("theme");
+applyTheme(
+  saved ||
+    (window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark")
+);
+themeBtn.addEventListener("click", () => {
+  const now = root.classList.contains("light") ? "dark" : "light";
+  applyTheme(now);
+});
+
+// Smooth scroll for internal links
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  a.addEventListener("click", (e) => {
+    const id = a.getAttribute("href");
+    if (id.length > 1) {
+      e.preventDefault();
+      document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
+
+// Copy email
+document.getElementById("copyEmail").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText("prabhudesai007@gmail.com");
+    toast("Email copied to clipboard");
+  } catch {
+    toast("Copy failed — you can copy manually.");
+  }
+});
+
+// Tiny toast
+function toast(msg) {
+  const t = document.createElement("div");
+  t.textContent = msg;
+  t.style.position = "fixed";
+  t.style.bottom = "18px";
+  t.style.right = "18px";
+  t.style.padding = "12px 14px";
+  t.style.background = "var(--panel)";
+  t.style.border = "1px solid var(--border)";
+  t.style.borderRadius = "12px";
+  t.style.boxShadow = "var(--shadow)";
+  document.body.appendChild(t);
+  setTimeout(() => {
+    t.style.opacity = ".0";
+    t.style.transition = "opacity .4s";
+  }, 1300);
+  setTimeout(() => t.remove(), 1800);
+}
+
+// Toggle menu on mobile
+const nav = document.querySelector(".nav");
+document.querySelector(".nav-toggle").addEventListener("click", () => {
+  nav.classList.toggle("open");
+});
+
+// Year
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+let successIcon = `<svg viewBox="0 -4 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor" width="18" height="18"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>check</title> <desc>Created with Sketch.</desc> <defs> <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1"> <stop stop-color="#1DD47F" offset="0%"> </stop> <stop stop-color="#0DA949" offset="100%"> </stop> </linearGradient> </defs> <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="ui-gambling-website-lined-icnos-casinoshunter" transform="translate(-735.000000, -1911.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero"> <g id="4" transform="translate(50.000000, 1871.000000)"> <path d="M714.442949,40.6265241 C715.185684,41.4224314 715.185684,42.6860985 714.442949,43.4820059 L697.746773,61.3734759 C697.314529,61.8366655 696.704235,62.0580167 696.097259,61.9870953 C695.539848,62.0082805 694.995328,61.7852625 694.600813,61.3625035 L685.557051,51.6712906 C684.814316,50.8753832 684.814316,49.6117161 685.557051,48.8158087 C686.336607,47.9804433 687.631056,47.9804433 688.410591,48.8157854 L696.178719,57.1395081 L711.589388,40.6265241 C712.368944,39.7911586 713.663393,39.7911586 714.442949,40.6265241 Z" id="check"> </path> </g> </g> </g> </g></svg>`;
+
+let errorIcon = `<svg fill="currentColor" width="18" height="18" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="red" d="M13 10.65657q0 .40404-.28283.68686l-1.37374 1.37374Q11.06061 13 10.65657 13t-.68687-.28283L7 9.74747l-2.9697 2.9697Q3.74747 13 3.34343 13q-.40404 0-.68686-.28283l-1.37374-1.37374Q1 11.06061 1 10.65657t.28283-.68687L4.25253 7l-2.9697-2.9697Q1 3.74747 1 3.34343q0-.40404.28283-.68686l1.37374-1.37374Q2.93939 1 3.34343 1t.68687.28283L7 4.25253l2.9697-2.9697Q10.25253 1 10.65657 1q.40404 0 .68686.28283l1.37374 1.37374Q13 2.93939 13 3.34343t-.28283.68687L9.74747 7l2.9697 2.9697Q13 10.25253 13 10.65657z"></path></g></svg>`;
+
+let warningIcon = `<svg viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" fill="currentColor" width="18" height="18"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g transform="translate(0 -1028.4)"> <path d="m12 1031.4c-0.985-0.1-1.715 0.7-2.0313 1.6-2.6053 5.2-5.2088 10.4-7.8125 15.6-0.6178 1.3 0.5802 2.9 2 2.8h7.8438 7.844c1.42 0.1 2.618-1.5 2-2.8-2.604-5.2-5.207-10.4-7.813-15.6-0.316-0.9-1.046-1.7-2.031-1.6z" fill="#f39c12"></path> <path d="m12 2c-0.985-0.0372-1.715 0.7682-2.0312 1.625-2.6054 5.2106-5.2089 10.418-7.8126 15.625-0.6178 1.307 0.5802 2.919 2 2.75 2.6101-0.003 5.2337-0.001 7.8438 0 2.61-0.001 5.234-0.003 7.844 0 1.42 0.169 2.618-1.443 2-2.75-2.604-5.207-5.207-10.414-7.813-15.625-0.316-0.8568-1.046-1.6622-2.031-1.625z" transform="translate(0 1028.4)" fill="#f1c40f"></path> <path d="m12 8c-0.552 0-1 0.4477-1 1l0.5 7h1l0.5-7c0-0.5523-0.448-1-1-1zm0 9c-0.552 0-1 0.448-1 1s0.448 1 1 1 1-0.448 1-1-0.448-1-1-1z" transform="translate(0 1028.4)" fill="#34495e"></path> </g> </g></svg>`;
+
+const form = document.getElementById("contactForm");
+const formNote = document.getElementById("formNote");
+
+form.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const formData = new FormData(form);
+  try {
+    const response = await fetch("https://formspree.io/f/mjkejbvd", {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
+    });
+
+    if (response.ok) {
+      toast(`${successIcon} Message sent successfully!`);
+      form.reset();
+    } else {
+      toast(`${errorIcon} Oops! Something went wrong.`);
+    }
+  } catch (error) {
+    toast(`${warningIcon} Network error. Please try again later.`);
+  }
+});
