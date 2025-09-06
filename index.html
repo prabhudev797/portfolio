@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Prabhudev Desai — Software Engineer</title>
+        <title>Prabhudev Desai — Senior Software Engineer</title>
         <meta
             name="description"
-            content="Portfolio of Prabhudev Desai — Software Engineer specializing in Java, Spring Boot, Node.js, React, Frappe, and scalable systems."
+            content="Portfolio of Prabhudev Desai — Senior Software Engineer specializing in Java, Spring Boot, Node.js, React, Frappe, and scalable systems."
         />
         <meta
             property="og:title"
-            content="Prabhudev Desai — Software Engineer"
+            content="Prabhudev Desai — Senior Software Engineer"
         />
         <meta
             property="og:description"
@@ -48,6 +48,8 @@
                 --border: #e8edf4;
                 --shadow: 0 8px 24px rgba(2, 8, 20, 0.08);
             }
+
+            /* Base Styles */
             * {
                 box-sizing: border-box;
             }
@@ -75,7 +77,10 @@
             .container {
                 width: min(1200px, 95vw);
                 margin: 0 auto;
+                padding: 0 1rem;
             }
+
+            /* Header + Nav */
             header {
                 position: sticky;
                 top: 0;
@@ -89,6 +94,7 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 14px 0;
+                position: relative;
             }
             .nav a.brand {
                 display: flex;
@@ -118,6 +124,16 @@
                 gap: 18px;
                 align-items: center;
             }
+            .nav-toggle {
+                display: none;
+                font-size: 26px;
+                color: var(--text);
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+
+            /* Buttons */
             .btn {
                 display: inline-flex;
                 align-items: center;
@@ -148,7 +164,7 @@
                 border: none;
             }
 
-            /* Hero */
+            /* Hero Section */
             .hero {
                 display: grid;
                 grid-template-columns: 1.1fr 0.9fr;
@@ -173,7 +189,7 @@
                 box-shadow: var(--shadow);
             }
             .title {
-                font-size: 40px;
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
                 line-height: 1.15;
                 margin: 0 0 10px;
                 letter-spacing: -0.5px;
@@ -181,7 +197,7 @@
             .subtitle {
                 margin-top: 0;
                 color: var(--muted);
-                font-size: 18px;
+                font-size: clamp(1rem, 2.5vw, 1.1rem);
             }
             .quick {
                 display: flex;
@@ -225,7 +241,7 @@
                 flex-wrap: wrap;
             }
 
-            /* Section */
+            /* Sections */
             section {
                 padding: 40px 0;
             }
@@ -251,7 +267,7 @@
                 border-radius: 999px;
             }
 
-            /* Cards, timeline */
+            /* Cards and Timeline */
             .grid {
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);
@@ -280,7 +296,6 @@
                 background: var(--chip);
                 margin: 6px 6px 0 0;
             }
-
             .timeline {
                 position: relative;
             }
@@ -301,9 +316,6 @@
                 position: relative;
                 padding-left: 32px;
                 margin: 18px 0;
-            }
-            .t-item::marker {
-                content: "";
             }
             .t-item .dot {
                 position: absolute;
@@ -347,13 +359,53 @@
                 color: var(--muted);
             }
 
-            /* Responsive */
-            @media (max-width: 920px) {
-                .hero {
-                    grid-template-columns: 1fr;
+            /* Responsive Layouts */
+            @media (max-width: 1024px) {
+                .grid,
+                .projects {
+                    grid-template-columns: repeat(6, 1fr);
                 }
                 .project {
-                    grid-column: span 12;
+                    grid-column: span 6;
+                }
+                .card[style*="grid-column"] {
+                    grid-column: span 6 !important;
+                }
+            }
+            @media (max-width: 768px) {
+                .hero {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                    gap: 20px;
+                }
+                .hero aside {
+                    margin-top: 20px;
+                }
+                .projects,
+                .grid {
+                    grid-template-columns: 1fr;
+                }
+                .project,
+                .card {
+                    grid-column: span 1 !important;
+                }
+                .nav .links {
+                    display: none;
+                    flex-direction: column;
+                    gap: 12px;
+                    position: absolute;
+                    top: 60px;
+                    right: 1rem;
+                    background: var(--panel);
+                    padding: 12px;
+                    border-radius: 12px;
+                    box-shadow: var(--shadow);
+                }
+                .nav.open .links {
+                    display: flex;
+                }
+                .nav-toggle {
+                    display: block;
                 }
             }
         </style>
@@ -386,6 +438,7 @@
                     <div class="logo" aria-hidden="true">PD</div>
                     <span>Portfolio</span>
                 </a>
+                <button class="nav-toggle" aria-label="Menu">☰</button>
                 <nav class="links" aria-label="Primary">
                     <a class="ghost" href="#experience">Experience</a>
                     <a class="ghost" href="#projects">Projects</a>
@@ -646,7 +699,11 @@
                 <div class="projects">
                     <article class="project">
                         <h3>News 24×7</h3>
-                        <p class="muted">A React.js news app with category filtering, dark mode, and functional components, sourcing reliable updates from thenewsapi.com.</p>
+                        <p class="muted">
+                            A React.js news app with category filtering, dark
+                            mode, and functional components, sourcing reliable
+                            updates from thenewsapi.com.
+                        </p>
                         <div>
                             <span class="tag">React</span>
                             <span class="tag">API Integration</span>
@@ -810,7 +867,8 @@
                         <h3>Soft Skills</h3>
                         <ul>
                             <li>
-                                Time management & customer-focused task adaptation.
+                                Time management & customer-focused task
+                                adaptation.
                             </li>
                             <li>
                                 Managed & collaborated with a 5‑member
@@ -1074,6 +1132,14 @@
                 }, 1300);
                 setTimeout(() => t.remove(), 1800);
             }
+
+            // Toggle menu on mobile
+            const nav = document.querySelector(".nav");
+            document
+                .querySelector(".nav-toggle")
+                .addEventListener("click", () => {
+                    nav.classList.toggle("open");
+                });
 
             // Year
             document.getElementById("yr").textContent =
