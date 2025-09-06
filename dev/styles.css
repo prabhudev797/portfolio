@@ -330,8 +330,16 @@
             /* Footer */
             footer {
                 border-top: 1px solid var(--border);
-                padding: 26px 0 60px;
+                padding: 20px 0 20px;
                 color: var(--muted);
+            }
+
+            .footer-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 10px;
             }
 
             /* Responsive Layouts */
@@ -382,5 +390,43 @@
                 .nav-toggle {
                     display: block;
                 }
+                .footer-row {
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: center;
+                }
             }
-        
+
+            /* Go-to-Top Floating SVG */
+#goTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: none;
+    z-index: 1100;
+    transition: opacity 0.3s;
+    color: var(--text); /* theme-aware */
+    animation: floatBounce 3s ease-in-out infinite;
+}
+
+#goTopBtn svg {
+    width: 40px;
+    height: 40px;
+}
+
+/* Hover effect */
+#goTopBtn:hover {
+    color: var(--brand);
+    transform: scale(1.1);
+}
+
+/* Floating + Bouncing animation */
+@keyframes floatBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}

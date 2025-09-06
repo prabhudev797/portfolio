@@ -103,3 +103,34 @@ form.addEventListener("submit", async function (event) {
     toast(`${warningIcon} Network error. Please try again later.`);
   }
 });
+
+// Array of professional footer lines with emojis
+const footerLines = [
+  "💼 Crafted with expertise in ERPNext, Frappe, and scalable software solutions.",
+  "🚀 Building efficient, scalable, and impactful software solutions for the real world.",
+  "🛠️ Turning ideas into reliable and maintainable software every day.",
+  "✨ Delivering custom ERPNext and Frappe solutions with precision and care.",
+  "💡 Engineering software that bridges vision and reality.",
+];
+
+// Pick a random line
+const randomLine = footerLines[Math.floor(Math.random() * footerLines.length)];
+document.getElementById("footerLine").textContent = randomLine;
+
+// Go-to-Top Button
+const goTopBtn = document.getElementById("goTopBtn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+        goTopBtn.style.display = "block";
+        goTopBtn.style.opacity = "1";
+    } else {
+        goTopBtn.style.opacity = "0";
+        setTimeout(() => (goTopBtn.style.display = "none"), 300);
+    }
+});
+
+goTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
