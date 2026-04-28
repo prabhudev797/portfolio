@@ -58,7 +58,10 @@ async function handleImageRequest(url) {
         );
 
         return new Response(decryptedBuffer, {
-            headers: { 'Content-Type': 'image/jpeg' }
+            headers: { 
+                'Content-Type': 'image/jpeg',
+                'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate'
+            }
         });
     } catch (e) {
         console.error('Decryption failed for', url.href, e);
