@@ -39,7 +39,7 @@ async function handleImageRequest(url) {
 
     try {
         const filename = url.pathname.substring(url.pathname.lastIndexOf('/') + 1);
-        const encUrl = new URL('./photos/' + filename + '.enc', self.registration.scope).href;
+        const encUrl = new URL('/ambeee/photos/' + filename + '.enc', url.origin).href;
 
         const response = await fetch(encUrl);
         if (!response.ok) return response;
