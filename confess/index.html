@@ -476,6 +476,54 @@
             pointer-events: none;
             z-index: 99;
         }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 576px) {
+            body {
+                padding: 12px;
+            }
+
+            .card {
+                padding: 26px 18px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2.1rem;
+            }
+
+            .tagline {
+                font-size: 0.95rem;
+            }
+
+            textarea {
+                height: 150px;
+                padding: 14px 16px;
+                font-size: 0.98rem;
+            }
+
+            .submit-btn {
+                height: 50px;
+                font-size: 1rem;
+            }
+
+            .prompts-grid {
+                gap: 6px;
+            }
+
+            .prompt-chip {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+
+            .toast {
+                width: 90%;
+                text-align: center;
+                justify-content: center;
+                font-size: 0.85rem;
+                padding: 12px 20px;
+            }
+        }
     </style>
 </head>
 
