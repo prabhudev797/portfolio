@@ -563,15 +563,6 @@
                 </button>
             </form>
 
-            <!-- Footer bar -->
-            <div class="footer-bar">
-                <span><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Encrypted
-                    Session</span>
-                <button type="button" class="config-btn" id="configApiBtn">
-                    <i class="fa-solid fa-gear"></i> Server API
-                </button>
-            </div>
-
         </div>
     </div>
 
@@ -755,17 +746,6 @@
                 toast.classList.remove('show');
             }, 3500);
         }
-
-        // --- API Config Modal / Prompt ---
-        document.getElementById('configApiBtn').addEventListener('click', () => {
-            const newUrl = prompt("Enter backend API Base URL:", apiBaseUrl);
-            if (newUrl !== null && newUrl.trim() !== "") {
-                apiBaseUrl = newUrl.trim().replace(/\/$/, "");
-                localStorage.setItem('api_base_url', apiBaseUrl);
-                initUUID();
-                showToast("API Base URL updated!");
-            }
-        });
 
         // --- Confetti Animation Effect ---
         function triggerConfetti() {
