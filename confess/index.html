@@ -657,6 +657,12 @@
         async function initUUID() {
             let userUuid = localStorage.getItem('user_uuid');
 
+            // If UUID is already present, keep and reuse it (no network fetch needed)
+            if (userUuid) {
+                return userUuid;
+            }
+
+            // Only fetch new UUID if not present in localStorage
             try {
                 const response = await fetch(`${apiBaseUrl}/get-uuid`);
                 if (response.ok) {
@@ -664,15 +670,20 @@
                     if (data.uuid) {
                         userUuid = data.uuid;
                         localStorage.setItem('user_uuid', userUuid);
+                        return userUuid;
                     }
                 }
             } catch (err) {
                 console.warn("Could not fetch UUID from server, generating client-side fallback.");
-                if (!userUuid && window.crypto && window.crypto.randomUUID) {
-                    userUuid = window.crypto.randomUUID();
-                    localStorage.setItem('user_uuid', userUuid);
-                }
             }
+
+            // Client-side fallback if server fetch fails or is offline
+            if (!userUuid && window.crypto && window.crypto.randomUUID) {
+                userUuid = window.crypto.randomUUID();
+                localStorage.setItem('user_uuid', userUuid);
+            }
+
+            return userUuid;
         }
 
         initUUID();
